@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Recommendation System</title>
+    <style>
+        /* Reset some default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #6C63FF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #5a54e6;
+        }
+
+        .book-details {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f7f7f7;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .book-details h2 {
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        .book-details p {
+            font-size: 1rem;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Book Recommendation System</h1>
+        <p>Click the button to get a book recommendation!</p>
+
+        <button id="recommendBtn">Get a Recommendation</button>
+
+        <div id="bookRecommendation" class="book-details"></div>
+    </div>
+
+    <script>
+        const books = [
+            {
+                title: "The Catcher in the Rye",
+                author: "J.D. Salinger",
+                genre: "Fiction",
+                description: "A young man's journey through life, identity, and alienation in 1950s New York."
+            },
+            {
+                title: "1984",
+                author: "George Orwell",
+                genre: "Dystopian",
+                description: "A chilling tale of a totalitarian society and the dangers of surveillance and propaganda."
+            },
+            {
+                title: "To Kill a Mockingbird",
+                author: "Harper Lee",
+                genre: "Classic Fiction",
+                description: "A story of racial injustice, courage, and childhood innocence in the American South."
+            },
+            {
+                title: "The Great Gatsby",
+                author: "F. Scott Fitzgerald",
+                genre: "Tragedy",
+                description: "The tale of Jay Gatsby's obsession with Daisy Buchanan, and the illusion of the American Dream."
+            },
+            {
+                title: "Moby Dick",
+                author: "Herman Melville",
+                genre: "Adventure",
+                description: "The epic quest of Captain Ahab to capture the elusive white whale, Moby Dick."
+            }
+        ];
+
+        document.getElementById('recommendBtn').addEventListener('click', function() {
+            const randomIndex = Math.floor(Math.random() * books.length);
+            const book = books[randomIndex];
+
+            const bookDetails = document.getElementById('bookRecommendation');
+            bookDetails.style.display = 'block';
+            bookDetails.innerHTML = `
+                <h2>${book.title}</h2>
+                <p><strong>Author:</strong> ${book.author}</p>
+                <p><strong>Genre:</strong> ${book.genre}</p>
+                <p><strong>Description:</strong> ${book.description}</p>
+            `;
+        });
+    </script>
+</body>
+</html>
